@@ -10,12 +10,21 @@
 using namespace std;
 using vector_int = vector<int>;
 
-bool elemento_situado(const vector_int& v, int ini, int fin) {
-  if (ini == fin) {
-    
-  } else {
-
-  }
+//v[i] == i.
+bool elemento_situado(const vector_int& v, int ini, int fin) 
+{
+	if (fin - ini == 1)//sean adyacentes
+	{
+		return v[ini] == i;
+	}
+	else //llamada recursiva
+	{
+		bool izq,der = false;
+		int mid = (fin + ini) / 2;//pivote del vector
+		izq = elemento_situado(v,ini,mid);
+		der = elemento_situado(v,mid,fin);
+		return izq || der;
+	}
 }
 
 // función que resuelve el problema
@@ -32,7 +41,6 @@ void resuelveCaso() {
   cin >> n;
   vector_int v(n);
   for (int i = 0; i < n; ++i) cin >> v[i];
-
   cout << (resolver(v) ? "YES" : "NO") << endl;
 }
 
